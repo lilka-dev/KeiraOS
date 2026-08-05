@@ -410,6 +410,12 @@ void LauncherApp::run() {
                         }
                     ),
                     ITEM::SUBMENU(
+                        K_S_LAUNCHER_MULTIBOOT,
+                        {
+                            ITEM::MENU(K_S_LAUNCHER_MULTIBOOT_OTA, [this]() { this->runApp<MultiBootApp>(); }),
+                        }
+                    ),
+                    ITEM::SUBMENU(
                         K_S_LAUNCHER_ABOUT,
                         {
                             ITEM::MENU(K_S_OS_NAME, [this]() { this->about(); }),
@@ -575,28 +581,26 @@ ITEM_LIST LauncherApp::loadCatalogItems() {
         const char* nameCStr = catalogItemNames_.back().c_str();
         String execPath = e.execPath;
         ExecutionType execType = e.type;
-        items.push_back(
-            ITEM::APP(
-                nameCStr,
-                [this, execPath, execType]() {
-                    switch (execType) {
-                        case EXEC_TYPE_LUA:
-                            ksystem.apps.spawn(new LuaFileRunnerApp(execPath));
-                            break;
-                        case EXEC_TYPE_BINARY:
-                            ksystem.apps.spawn(new MultiBootApp(execPath));
-                            break;
-                        case EXEC_TYPE_DYNAPP:
-                            ksystem.apps.spawn(new DynApp(execPath));
-                            break;
-                        default:
-                            break;
-                    }
-                },
-                nullptr,
-                lilka::colors::Aquamarine
-            )
-        );
+        items.push_back(ITEM::APP(
+            nameCStr,
+            [this, execPath, execType]() {
+                switch (execType) {
+                    case EXEC_TYPE_LUA:
+                        ksystem.apps.spawn(new LuaFileRunnerApp(execPath));
+                        break;
+                    case EXEC_TYPE_BINARY:
+                        ksystem.apps.spawn(new MultiBootApp(execPath));
+                        break;
+                    case EXEC_TYPE_DYNAPP:
+                        ksystem.apps.spawn(new DynApp(execPath));
+                        break;
+                    default:
+                        break;
+                }
+            },
+            nullptr,
+            lilka::colors::Aquamarine
+        ));
     }
     return items;
 }

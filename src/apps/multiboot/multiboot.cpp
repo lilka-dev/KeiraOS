@@ -8,7 +8,8 @@ MultiBootApp::MultiBootApp(const String& path) : App("MultiBoot") {
 }
 
 void MultiBootApp::run() {
-    fileLoadAsRom(firmwarePath);
+    if (firmwarePath == "") lilka::multiboot.bootLast();
+    else fileLoadAsRom(firmwarePath);
 }
 
 void MultiBootApp::fileLoadAsRom(const String& path) {

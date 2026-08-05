@@ -113,6 +113,9 @@
 #define K_S_LAUNCHER_BATTERY_2         "Іконка"
 #define K_S_LAUNCHER_BATTERY_3         "Текст"
 
+#define K_S_LAUNCHER_MULTIBOOT         "MultiBoot"
+#define K_S_LAUNCHER_MULTIBOOT_OTA    "Завантажити OTA прошивку"
+
 #define K_S_LAUNCHER_ABOUT_SYSTEM      "Про систему"
 #define K_S_LAUNCHER_ABOUT             "Про пристрій"
 #define K_S_LAUNCHER_FIRMWARE_VERSION  "Версія прошивки"
