@@ -410,6 +410,12 @@ void LauncherApp::run() {
                         }
                     ),
                     ITEM::SUBMENU(
+                        K_S_LAUNCHER_MULTIBOOT,
+                        {
+                            ITEM::MENU(K_S_LAUNCHER_MULTIBOOT_OTA, [this]() { this->runApp<MultiBootApp>(); }),
+                        }
+                    ),
+                    ITEM::SUBMENU(
                         K_S_LAUNCHER_ABOUT,
                         {
                             ITEM::MENU(K_S_OS_NAME, [this]() { this->about(); }),

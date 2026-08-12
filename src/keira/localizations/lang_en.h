@@ -114,6 +114,9 @@
 #define K_S_LAUNCHER_BATTERY_2         "Icon"
 #define K_S_LAUNCHER_BATTERY_3         "Text"
 
+#define K_S_LAUNCHER_MULTIBOOT         "MultiBoot"
+#define K_S_LAUNCHER_MULTIBOOT_OTA    "Load OTA firmware"
+
 #define K_S_LAUNCHER_ABOUT_SYSTEM      "About system"
 #define K_S_LAUNCHER_ABOUT             "About"
 #define K_S_LAUNCHER_FIRMWARE_VERSION  "Firmware version"
