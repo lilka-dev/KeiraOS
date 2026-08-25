@@ -118,6 +118,24 @@ void LauncherApp::run() {
         appsItems.push_back(std::move(item));
     }
 
+    // Check name of the last loaded guest OTA firmware
+    String lastOTA = "";
+    Preferences prefs;
+    prefs.begin("lilka", false);
+
+//TODO: make the corresponding define public in libdeps/lilka/multiboot.h
+#define MULTIBOOT_PATH_KEY "multiboot_path"
+
+    if (prefs.isKey(MULTIBOOT_PATH_KEY)) {
+        lastOTA = prefs.getString(MULTIBOOT_PATH_KEY);
+    }
+    prefs.end();
+
+    // Insert it into the Applications menu
+    if (!lastOTA.isEmpty()) {
+        appsItems.insert(appsItems.begin(), ITEM::APP(lastOTA.c_str(), [this]() { this->runApp<MultiBootApp>(); }));
+    }
+
     item_t root_item = ITEM::SUBMENU(
         K_S_LAUNCHER_MAIN_MENU,
         {
