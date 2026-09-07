@@ -92,7 +92,7 @@ void MadPlayerApp::run() {
 
     // Create I2S output and analyzer (owned by this app)
     i2sOutput = new AudioOutputI2S();
-    i2sOutput->SetPinout(LILKA_I2S_BCLK, LILKA_I2S_LRCK, LILKA_I2S_DOUT);
+    i2sOutput->SetPinout(LILKA_I2S_BCLK, LILKA_I2S_LRCK, LILKA_I2S_DOUT, -1);
     analyzer = new lilka::AudioOutputAnalyzer(i2sOutput);
 
     // Start playback via AudioPlayer

@@ -56,7 +56,7 @@ bool AudioPlayer::play(lilka::Sound* sound, AudioOutput* customOutput) {
         ownsOutput = false;
     } else {
         AudioOutputI2S* i2s = new AudioOutputI2S();
-        i2s->SetPinout(LILKA_I2S_BCLK, LILKA_I2S_LRCK, LILKA_I2S_DOUT);
+        i2s->SetPinout(LILKA_I2S_BCLK, LILKA_I2S_LRCK, LILKA_I2S_DOUT, -1);
         output = i2s;
         ownsOutput = true;
     }
